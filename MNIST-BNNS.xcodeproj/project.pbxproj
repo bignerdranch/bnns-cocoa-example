@@ -1,0 +1,327 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		930EE9BD1D6469DD00CD07D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 930EE9BC1D6469DD00CD07D6 /* main.m */; };
+		930EE9BF1D6469DD00CD07D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 930EE9BE1D6469DD00CD07D6 /* Assets.xcassets */; };
+		930EE9C21D6469DE00CD07D6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 930EE9C01D6469DE00CD07D6 /* MainMenu.xib */; };
+		930EE9D21D646B3F00CD07D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 930EE9C91D646B3F00CD07D6 /* AppDelegate.m */; };
+		930EE9D31D646B3F00CD07D6 /* biases.data in Resources */ = {isa = PBXBuildFile; fileRef = 930EE9CA1D646B3F00CD07D6 /* biases.data */; };
+		930EE9D41D646B3F00CD07D6 /* MNISTDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 930EE9CC1D646B3F00CD07D6 /* MNISTDataSet.m */; };
+		930EE9D51D646B3F00CD07D6 /* PixelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 930EE9CE1D646B3F00CD07D6 /* PixelView.m */; };
+		930EE9D61D646B3F00CD07D6 /* t10k-images-idx3-ubyte in Resources */ = {isa = PBXBuildFile; fileRef = 930EE9CF1D646B3F00CD07D6 /* t10k-images-idx3-ubyte */; };
+		930EE9D71D646B3F00CD07D6 /* t10k-labels-idx1-ubyte in Resources */ = {isa = PBXBuildFile; fileRef = 930EE9D01D646B3F00CD07D6 /* t10k-labels-idx1-ubyte */; };
+		930EE9D81D646B3F00CD07D6 /* weights.data in Resources */ = {isa = PBXBuildFile; fileRef = 930EE9D11D646B3F00CD07D6 /* weights.data */; };
+		930EE9DC1D64708A00CD07D6 /* PythonFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 930EE9DB1D64708A00CD07D6 /* PythonFileUtils.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		930EE9B51D6469DD00CD07D6 /* MNIST-BNNS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MNIST-BNNS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		930EE9B81D6469DD00CD07D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "MNIST-BNNS/AppDelegate.h"; sourceTree = "<group>"; };
+		930EE9BC1D6469DD00CD07D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		930EE9BE1D6469DD00CD07D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		930EE9C11D6469DE00CD07D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		930EE9C31D6469DE00CD07D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		930EE9C91D646B3F00CD07D6 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "MNIST-BNNS/AppDelegate.m"; sourceTree = "<group>"; };
+		930EE9CA1D646B3F00CD07D6 /* biases.data */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = biases.data; path = "MNIST-BNNS/biases.data"; sourceTree = "<group>"; };
+		930EE9CB1D646B3F00CD07D6 /* MNISTDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MNISTDataSet.h; path = "MNIST-BNNS/MNISTDataSet.h"; sourceTree = "<group>"; };
+		930EE9CC1D646B3F00CD07D6 /* MNISTDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MNISTDataSet.m; path = "MNIST-BNNS/MNISTDataSet.m"; sourceTree = "<group>"; };
+		930EE9CD1D646B3F00CD07D6 /* PixelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PixelView.h; path = "MNIST-BNNS/PixelView.h"; sourceTree = "<group>"; };
+		930EE9CE1D646B3F00CD07D6 /* PixelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PixelView.m; path = "MNIST-BNNS/PixelView.m"; sourceTree = "<group>"; };
+		930EE9CF1D646B3F00CD07D6 /* t10k-images-idx3-ubyte */ = {isa = PBXFileReference; lastKnownFileType = file; name = "t10k-images-idx3-ubyte"; path = "MNIST-BNNS/t10k-images-idx3-ubyte"; sourceTree = "<group>"; };
+		930EE9D01D646B3F00CD07D6 /* t10k-labels-idx1-ubyte */ = {isa = PBXFileReference; lastKnownFileType = file; name = "t10k-labels-idx1-ubyte"; path = "MNIST-BNNS/t10k-labels-idx1-ubyte"; sourceTree = "<group>"; };
+		930EE9D11D646B3F00CD07D6 /* weights.data */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = weights.data; path = "MNIST-BNNS/weights.data"; sourceTree = "<group>"; };
+		930EE9DA1D64708A00CD07D6 /* PythonFileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PythonFileUtils.h; path = "MNIST-BNNS/PythonFileUtils.h"; sourceTree = "<group>"; };
+		930EE9DB1D64708A00CD07D6 /* PythonFileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PythonFileUtils.m; path = "MNIST-BNNS/PythonFileUtils.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		930EE9B21D6469DD00CD07D6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		930EE9AC1D6469DD00CD07D6 = {
+			isa = PBXGroup;
+			children = (
+				930EE9DA1D64708A00CD07D6 /* PythonFileUtils.h */,
+				930EE9DB1D64708A00CD07D6 /* PythonFileUtils.m */,
+				930EE9B81D6469DD00CD07D6 /* AppDelegate.h */,
+				930EE9C91D646B3F00CD07D6 /* AppDelegate.m */,
+				930EE9CB1D646B3F00CD07D6 /* MNISTDataSet.h */,
+				930EE9CC1D646B3F00CD07D6 /* MNISTDataSet.m */,
+				930EE9CD1D646B3F00CD07D6 /* PixelView.h */,
+				930EE9CE1D646B3F00CD07D6 /* PixelView.m */,
+				930EE9C01D6469DE00CD07D6 /* MainMenu.xib */,
+				930EE9D91D646B4D00CD07D6 /* Data */,
+				930EE9BB1D6469DD00CD07D6 /* Supporting Files */,
+				930EE9B61D6469DD00CD07D6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		930EE9B61D6469DD00CD07D6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				930EE9B51D6469DD00CD07D6 /* MNIST-BNNS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		930EE9BB1D6469DD00CD07D6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				930EE9BE1D6469DD00CD07D6 /* Assets.xcassets */,
+				930EE9C31D6469DE00CD07D6 /* Info.plist */,
+				930EE9BC1D6469DD00CD07D6 /* main.m */,
+			);
+			name = "Supporting Files";
+			path = "MNIST-BNNS";
+			sourceTree = "<group>";
+		};
+		930EE9D91D646B4D00CD07D6 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				930EE9CF1D646B3F00CD07D6 /* t10k-images-idx3-ubyte */,
+				930EE9D01D646B3F00CD07D6 /* t10k-labels-idx1-ubyte */,
+				930EE9D11D646B3F00CD07D6 /* weights.data */,
+				930EE9CA1D646B3F00CD07D6 /* biases.data */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		930EE9B41D6469DD00CD07D6 /* MNIST-BNNS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 930EE9C61D6469DE00CD07D6 /* Build configuration list for PBXNativeTarget "MNIST-BNNS" */;
+			buildPhases = (
+				930EE9B11D6469DD00CD07D6 /* Sources */,
+				930EE9B21D6469DD00CD07D6 /* Frameworks */,
+				930EE9B31D6469DD00CD07D6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MNIST-BNNS";
+			productName = "MNIST-BNNS";
+			productReference = 930EE9B51D6469DD00CD07D6 /* MNIST-BNNS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		930EE9AD1D6469DD00CD07D6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Big Nerd Ranch";
+				TargetAttributes = {
+					930EE9B41D6469DD00CD07D6 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 930EE9B01D6469DD00CD07D6 /* Build configuration list for PBXProject "MNIST-BNNS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 930EE9AC1D6469DD00CD07D6;
+			productRefGroup = 930EE9B61D6469DD00CD07D6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				930EE9B41D6469DD00CD07D6 /* MNIST-BNNS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		930EE9B31D6469DD00CD07D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				930EE9D61D646B3F00CD07D6 /* t10k-images-idx3-ubyte in Resources */,
+				930EE9D81D646B3F00CD07D6 /* weights.data in Resources */,
+				930EE9BF1D6469DD00CD07D6 /* Assets.xcassets in Resources */,
+				930EE9C21D6469DE00CD07D6 /* MainMenu.xib in Resources */,
+				930EE9D71D646B3F00CD07D6 /* t10k-labels-idx1-ubyte in Resources */,
+				930EE9D31D646B3F00CD07D6 /* biases.data in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		930EE9B11D6469DD00CD07D6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				930EE9D41D646B3F00CD07D6 /* MNISTDataSet.m in Sources */,
+				930EE9D21D646B3F00CD07D6 /* AppDelegate.m in Sources */,
+				930EE9BD1D6469DD00CD07D6 /* main.m in Sources */,
+				930EE9D51D646B3F00CD07D6 /* PixelView.m in Sources */,
+				930EE9DC1D64708A00CD07D6 /* PythonFileUtils.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		930EE9C01D6469DE00CD07D6 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				930EE9C11D6469DE00CD07D6 /* Base */,
+			);
+			name = MainMenu.xib;
+			path = "MNIST-BNNS";
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		930EE9C41D6469DE00CD07D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		930EE9C51D6469DE00CD07D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		930EE9C71D6469DE00CD07D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "MNIST-BNNS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bignerdranch.MNIST-BNNS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		930EE9C81D6469DE00CD07D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "MNIST-BNNS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bignerdranch.MNIST-BNNS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		930EE9B01D6469DD00CD07D6 /* Build configuration list for PBXProject "MNIST-BNNS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				930EE9C41D6469DE00CD07D6 /* Debug */,
+				930EE9C51D6469DE00CD07D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		930EE9C61D6469DE00CD07D6 /* Build configuration list for PBXNativeTarget "MNIST-BNNS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				930EE9C71D6469DE00CD07D6 /* Debug */,
+				930EE9C81D6469DE00CD07D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 930EE9AD1D6469DD00CD07D6 /* Project object */;
+}
