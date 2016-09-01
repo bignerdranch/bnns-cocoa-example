@@ -10,9 +10,10 @@
 #import "PixelView.h"
 #import "MNISTDataSet.h"
 #import "PythonFileUtils.h"
+#import "softmax.h"
 
-#define BIASES_COUNT (10)
-#define WEIGHTS_COUNT (784)
+#define OUT_COUNT (10)
+#define IN_COUNT (784)
 
 @interface AppDelegate ()
 
@@ -39,47 +40,70 @@
     
     NSString *biasesPath = [[NSBundle mainBundle] pathForResource:@"biases"
                                                            ofType:@"data"];
-    biases = createFloatArrayFromPythonFile(biasesPath, BIASES_COUNT);
+    biases = createFloatArrayFromPythonFile(biasesPath, OUT_COUNT);
    
-    // Logging just for fun
-    fprintf(stderr, "biases = ");
-    for (int i = 0; i < BIASES_COUNT; i++ ) {
-        fprintf(stderr, "%f,", biases[i]);
-    }
-    fprintf(stderr, "\n");
-    
     
     NSString *weightsPath = [[NSBundle mainBundle] pathForResource:@"weights"
                                                            ofType:@"data"];
     
-    weights = createFloatMatrixFromPytonFile(weightsPath, BIASES_COUNT, WEIGHTS_COUNT);
+    // Creates 784 arrays each containing 10 floats
+    weights = createFloatMatrixFromPythonFile(weightsPath, OUT_COUNT, IN_COUNT);
     
-    // Logging just for fun
-    fprintf(stderr, "weights = ");
-    for (int i = 0; i < WEIGHTS_COUNT; i++ ) {
-        float *subArray = weights[i];
-        fprintf(stderr, "[");
-        for (int j = 0; j < BIASES_COUNT; j++) {
-            fprintf(stderr, "%f,", subArray[j]);
+    BNNSVectorDescriptor inVectorDescriptor;
+    bzero(&inVectorDescriptor,sizeof(inVectorDescriptor));
+    inVectorDescriptor.data_type = BNNSDataTypeFloat32;
+    inVectorDescriptor.size = IN_COUNT;
+    
+    BNNSVectorDescriptor outVectorDescriptor;
+    bzero(&outVectorDescriptor,sizeof(outVectorDescriptor));
+    outVectorDescriptor.data_type = BNNSDataTypeFloat32;
+    outVectorDescriptor.size = OUT_COUNT;
+    
+    BNNSFullyConnectedLayerParameters parameters;
+    bzero(&parameters,sizeof(parameters));
+    
+    parameters.in_size = IN_COUNT;
+    parameters.out_size = OUT_COUNT;
+    parameters.activation.function = BNNSActivationFunctionIdentity;
+    parameters.bias.data = biases;
+    parameters.bias.data_type = BNNSDataTypeFloat32;
+    
+    float *weightVector = (float *)malloc(sizeof(float) * IN_COUNT * OUT_COUNT);
+    
+    for (int outCount = 0; outCount < OUT_COUNT; outCount++) {
+        for (int inCount = 0; inCount < IN_COUNT; inCount++) {
+            weightVector[inCount + outCount * IN_COUNT] = weights[inCount][outCount];
         }
-        fprintf(stderr, "]\n");
     }
-    fprintf(stderr, "\n");
+    parameters.weights.data = weightVector;
+    parameters.weights.data_type = BNNSDataTypeFloat32;
+    
+    filter = BNNSFilterCreateFullyConnectedLayer(&inVectorDescriptor,
+                                                 &outVectorDescriptor,
+                                                 &parameters,NULL);
 
-    // FIXME: Bolot, create the BNNS network here and load it with the floats read above
-    // Do I need to implement softmax myself?
+    if (!filter) {
+        NSLog(@"BNNSFilterCreateFullyConnectedLayer failed");
+    }
+    
 }
 
 
 - (void)getGuesses:(float *)guesses
           forImage:(const unsigned char *)im
 {
-    int pixelCount = dataSet.columns * dataSet.rows;
+    float buffer[IN_COUNT];
     
-    // FIXME: Bolot, feed the image in and get the result
-
-    for (int i = 0; i < 10; i++) {
-        guesses[i] = 0.5;
+    for (int i = 0; i < IN_COUNT; i++ ){
+        buffer[i] = im[i] / 255.0;
+    }
+    float output[OUT_COUNT];
+    int success = BNNSFilterApply(filter, buffer, output);
+    
+    softmax(output, guesses, OUT_COUNT);
+    
+    if (success != 0) {
+        NSLog(@"FilterApply failed!");
     }
 }
 

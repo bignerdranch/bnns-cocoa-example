@@ -14,4 +14,4 @@ extern float * createFloatArrayFromPythonFile(NSString *filePath, int n);
 
 // Creates an m-array of a n-float arrays
 // Return NULL if anything goes wrong
-extern float ** createFloatMatrixFromPytonFile(NSString *filePath, int n, int m);
+extern float ** createFloatMatrixFromPythonFile(NSString *filePath, int n, int m);

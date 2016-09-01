@@ -7,6 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#include <Accelerate/Accelerate.h>
+
 
 @class MNISTDataSet;
 
@@ -16,6 +18,7 @@
     unsigned int selectedImage;
     float *biases;
     float **weights;
+    BNNSFilter filter;
 }
 - (IBAction)showNext:(id)sender;
 - (IBAction)showPrevious:(id)sender;

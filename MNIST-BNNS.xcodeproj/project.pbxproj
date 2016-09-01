@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84AB7F821D78761500CE228B /* softmax.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AB7F801D78761500CE228B /* softmax.c */; };
 		930EE9BD1D6469DD00CD07D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 930EE9BC1D6469DD00CD07D6 /* main.m */; };
 		930EE9BF1D6469DD00CD07D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 930EE9BE1D6469DD00CD07D6 /* Assets.xcassets */; };
 		930EE9C21D6469DE00CD07D6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 930EE9C01D6469DE00CD07D6 /* MainMenu.xib */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		84AB7F801D78761500CE228B /* softmax.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = softmax.c; path = "MNIST-BNNS/softmax.c"; sourceTree = "<group>"; };
+		84AB7F811D78761500CE228B /* softmax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = softmax.h; path = "MNIST-BNNS/softmax.h"; sourceTree = "<group>"; };
 		930EE9B51D6469DD00CD07D6 /* MNIST-BNNS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MNIST-BNNS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		930EE9B81D6469DD00CD07D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "MNIST-BNNS/AppDelegate.h"; sourceTree = "<group>"; };
 		930EE9BC1D6469DD00CD07D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -54,6 +57,8 @@
 		930EE9AC1D6469DD00CD07D6 = {
 			isa = PBXGroup;
 			children = (
+				84AB7F811D78761500CE228B /* softmax.h */,
+				84AB7F801D78761500CE228B /* softmax.c */,
 				930EE9DA1D64708A00CD07D6 /* PythonFileUtils.h */,
 				930EE9DB1D64708A00CD07D6 /* PythonFileUtils.m */,
 				930EE9B81D6469DD00CD07D6 /* AppDelegate.h */,
@@ -125,7 +130,7 @@
 		930EE9AD1D6469DD00CD07D6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Big Nerd Ranch";
 				TargetAttributes = {
 					930EE9B41D6469DD00CD07D6 = {
@@ -174,6 +179,7 @@
 			files = (
 				930EE9D41D646B3F00CD07D6 /* MNISTDataSet.m in Sources */,
 				930EE9D21D646B3F00CD07D6 /* AppDelegate.m in Sources */,
+				84AB7F821D78761500CE228B /* softmax.c in Sources */,
 				930EE9BD1D6469DD00CD07D6 /* main.m in Sources */,
 				930EE9D51D646B3F00CD07D6 /* PixelView.m in Sources */,
 				930EE9DC1D64708A00CD07D6 /* PythonFileUtils.m in Sources */,
@@ -209,8 +215,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -253,8 +261,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";

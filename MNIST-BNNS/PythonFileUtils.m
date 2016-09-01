@@ -64,9 +64,9 @@ float *createFloatArrayFromPythonFile(NSString *filePath, int n)
     return buffer;
 }
 
-// Creates an m-array of a n-float arrays
+// Creates an array (of size m) of arrays, each holding n floats
 // Return NULL if anything goes wrong
-float ** createFloatMatrixFromPytonFile(NSString *filePath, int n, int m)
+float ** createFloatMatrixFromPythonFile(NSString *filePath, int n, int m)
 {
     FILE *inFile = fopen([filePath cStringUsingEncoding:NSUTF8StringEncoding], "r");
     if (!inFile) {
