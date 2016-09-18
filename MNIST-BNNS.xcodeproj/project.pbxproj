@@ -18,7 +18,8 @@
 		930EE9D61D646B3F00CD07D6 /* t10k-images-idx3-ubyte in Resources */ = {isa = PBXBuildFile; fileRef = 930EE9CF1D646B3F00CD07D6 /* t10k-images-idx3-ubyte */; };
 		930EE9D71D646B3F00CD07D6 /* t10k-labels-idx1-ubyte in Resources */ = {isa = PBXBuildFile; fileRef = 930EE9D01D646B3F00CD07D6 /* t10k-labels-idx1-ubyte */; };
 		930EE9D81D646B3F00CD07D6 /* weights.data in Resources */ = {isa = PBXBuildFile; fileRef = 930EE9D11D646B3F00CD07D6 /* weights.data */; };
-		930EE9DC1D64708A00CD07D6 /* PythonFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 930EE9DB1D64708A00CD07D6 /* PythonFileUtils.m */; };
+		93C040741D8F21700021CC8E /* PyDumpParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C040731D8F21700021CC8E /* PyDumpParser.m */; };
+		93C040771D8F30B70021CC8E /* WeightReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C040761D8F30B70021CC8E /* WeightReader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,8 +40,10 @@
 		930EE9CF1D646B3F00CD07D6 /* t10k-images-idx3-ubyte */ = {isa = PBXFileReference; lastKnownFileType = file; name = "t10k-images-idx3-ubyte"; path = "MNIST-BNNS/t10k-images-idx3-ubyte"; sourceTree = "<group>"; };
 		930EE9D01D646B3F00CD07D6 /* t10k-labels-idx1-ubyte */ = {isa = PBXFileReference; lastKnownFileType = file; name = "t10k-labels-idx1-ubyte"; path = "MNIST-BNNS/t10k-labels-idx1-ubyte"; sourceTree = "<group>"; };
 		930EE9D11D646B3F00CD07D6 /* weights.data */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = weights.data; path = "MNIST-BNNS/weights.data"; sourceTree = "<group>"; };
-		930EE9DA1D64708A00CD07D6 /* PythonFileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PythonFileUtils.h; path = "MNIST-BNNS/PythonFileUtils.h"; sourceTree = "<group>"; };
-		930EE9DB1D64708A00CD07D6 /* PythonFileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PythonFileUtils.m; path = "MNIST-BNNS/PythonFileUtils.m"; sourceTree = "<group>"; };
+		93C040721D8F21700021CC8E /* PyDumpParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PyDumpParser.h; path = "MNIST-BNNS/PyDumpParser.h"; sourceTree = "<group>"; };
+		93C040731D8F21700021CC8E /* PyDumpParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PyDumpParser.m; path = "MNIST-BNNS/PyDumpParser.m"; sourceTree = "<group>"; };
+		93C040751D8F30B70021CC8E /* WeightReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeightReader.h; path = "MNIST-BNNS/WeightReader.h"; sourceTree = "<group>"; };
+		93C040761D8F30B70021CC8E /* WeightReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeightReader.m; path = "MNIST-BNNS/WeightReader.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,8 +62,10 @@
 			children = (
 				84AB7F811D78761500CE228B /* softmax.h */,
 				84AB7F801D78761500CE228B /* softmax.c */,
-				930EE9DA1D64708A00CD07D6 /* PythonFileUtils.h */,
-				930EE9DB1D64708A00CD07D6 /* PythonFileUtils.m */,
+				93C040751D8F30B70021CC8E /* WeightReader.h */,
+				93C040761D8F30B70021CC8E /* WeightReader.m */,
+				93C040721D8F21700021CC8E /* PyDumpParser.h */,
+				93C040731D8F21700021CC8E /* PyDumpParser.m */,
 				930EE9B81D6469DD00CD07D6 /* AppDelegate.h */,
 				930EE9C91D646B3F00CD07D6 /* AppDelegate.m */,
 				930EE9CB1D646B3F00CD07D6 /* MNISTDataSet.h */,
@@ -178,11 +183,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				930EE9D41D646B3F00CD07D6 /* MNISTDataSet.m in Sources */,
+				93C040771D8F30B70021CC8E /* WeightReader.m in Sources */,
 				930EE9D21D646B3F00CD07D6 /* AppDelegate.m in Sources */,
 				84AB7F821D78761500CE228B /* softmax.c in Sources */,
 				930EE9BD1D6469DD00CD07D6 /* main.m in Sources */,
 				930EE9D51D646B3F00CD07D6 /* PixelView.m in Sources */,
-				930EE9DC1D64708A00CD07D6 /* PythonFileUtils.m in Sources */,
+				93C040741D8F21700021CC8E /* PyDumpParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

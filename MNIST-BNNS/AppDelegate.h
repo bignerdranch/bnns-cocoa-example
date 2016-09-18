@@ -16,8 +16,6 @@
 {
     MNISTDataSet *dataSet;
     unsigned int selectedImage;
-    float *biases;
-    float **weights;
     BNNSFilter filter;
 }
 - (IBAction)showNext:(id)sender;

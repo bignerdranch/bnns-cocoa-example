@@ -9,8 +9,8 @@
 #import "AppDelegate.h"
 #import "PixelView.h"
 #import "MNISTDataSet.h"
-#import "PythonFileUtils.h"
 #import "softmax.h"
+#import "WeightReader.h"
 
 #define OUT_COUNT (10)
 #define IN_COUNT (784)
@@ -38,17 +38,6 @@
 - (void)createModel
 {
     
-    NSString *biasesPath = [[NSBundle mainBundle] pathForResource:@"biases"
-                                                           ofType:@"data"];
-    biases = createFloatArrayFromPythonFile(biasesPath, OUT_COUNT);
-   
-    
-    NSString *weightsPath = [[NSBundle mainBundle] pathForResource:@"weights"
-                                                           ofType:@"data"];
-    
-    // Creates 784 arrays each containing 10 floats
-    weights = createFloatMatrixFromPythonFile(weightsPath, OUT_COUNT, IN_COUNT);
-    
     BNNSVectorDescriptor inVectorDescriptor;
     bzero(&inVectorDescriptor,sizeof(inVectorDescriptor));
     inVectorDescriptor.data_type = BNNSDataTypeFloat32;
@@ -65,18 +54,44 @@
     parameters.in_size = IN_COUNT;
     parameters.out_size = OUT_COUNT;
     parameters.activation.function = BNNSActivationFunctionIdentity;
-    parameters.bias.data = biases;
-    parameters.bias.data_type = BNNSDataTypeFloat32;
     
+    NSString *weightsPath = [[NSBundle mainBundle] pathForResource:@"weights"
+                                                            ofType:@"data"];
+
     float *weightVector = (float *)malloc(sizeof(float) * IN_COUNT * OUT_COUNT);
+    NSError *error;
+    BOOL success = [WeightReader fillArray:weightVector
+                              fromFilename:weightsPath
+                               outerLength:IN_COUNT
+                               innerLength:OUT_COUNT
+                                     error:&error];
     
-    for (int outCount = 0; outCount < OUT_COUNT; outCount++) {
-        for (int inCount = 0; inCount < IN_COUNT; inCount++) {
-            weightVector[inCount + outCount * IN_COUNT] = weights[inCount][outCount];
-        }
+    if (!success) {
+        NSLog(@"failed to read weights: %@", error);
     }
+    
+
+    NSString *biasesPath = [[NSBundle mainBundle] pathForResource:@"biases"
+                                                           ofType:@"data"];
+
+    float *biasVector = (float *)malloc(sizeof(float) * OUT_COUNT);
+    success = [WeightReader fillArray:biasVector
+                         fromFilename:biasesPath
+                               length:OUT_COUNT
+                                error:&error];
+
+    
+    if (!success) {
+        NSLog(@"failed to read weights: %@", error);
+    }
+
+    
     parameters.weights.data = weightVector;
     parameters.weights.data_type = BNNSDataTypeFloat32;
+
+    parameters.bias.data = biasVector;
+    parameters.bias.data_type = BNNSDataTypeFloat32;
+    
     
     filter = BNNSFilterCreateFullyConnectedLayer(&inVectorDescriptor,
                                                  &outVectorDescriptor,
@@ -85,7 +100,7 @@
     if (!filter) {
         NSLog(@"BNNSFilterCreateFullyConnectedLayer failed");
     }
-    
+
 }
 
 
@@ -98,6 +113,7 @@
         buffer[i] = im[i] / 255.0;
     }
     float output[OUT_COUNT];
+    
     int success = BNNSFilterApply(filter, buffer, output);
     
     softmax(output, guesses, OUT_COUNT);
