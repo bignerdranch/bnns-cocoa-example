@@ -19,12 +19,14 @@
      fromFilename:(NSString *)weightsPath
       outerLength:(int)outerLen
       innerLength:(int)innerLen
+          reverse:(BOOL)isReversed
             error:(NSError **)err
 {
     WeightReader *wr = [[WeightReader alloc] init];
     wr.arrayToFill = weightVector;
     wr.outerLen = outerLen;
     wr.innerLen = innerLen;
+    wr.isReversed = isReversed;
     
     PyDumpParser *parser = [[PyDumpParser alloc] initWithFilename:weightsPath];
     parser.delegate = wr;
@@ -52,7 +54,6 @@
     return success;
 }
 
-
 - (void)parserBeginArray:(PyDumpParser *)sender
 {
     // No op
@@ -68,14 +69,18 @@
     // Is this one-dimension?
     if (self.innerLen == 0) {
         NSUInteger i = [idxPath indexAtPosition:0];
-        fprintf(stderr, "Bias: {%lu} = %f\n", (unsigned long)i, d);
-
+        //fprintf(stderr, "Bias: {%lu} = %f\n", (unsigned long)i, d);
         self.arrayToFill[i] = (float)d;
-    } else {
+    } else { // Must be two-dimensional
         NSUInteger outerIndex = [idxPath indexAtPosition:0];
         NSUInteger innerIndex = [idxPath indexAtPosition:1];
-        fprintf(stderr, "Weight: {%lu,%lu} = %f\n", (unsigned long)outerIndex, (unsigned long)innerIndex, d);
-        NSUInteger i = outerIndex * self.innerLen + innerIndex;
+        //fprintf(stderr, "Weight: {%lu,%lu} = %f\n", (unsigned long)outerIndex, (unsigned long)innerIndex, d);
+        NSUInteger i;
+        if (self.isReversed) {
+            i = innerIndex * self.outerLen + outerIndex;
+        } else {
+            i = outerIndex * self.innerLen + innerIndex;
+        }
         self.arrayToFill[i] = d;
     }
 }

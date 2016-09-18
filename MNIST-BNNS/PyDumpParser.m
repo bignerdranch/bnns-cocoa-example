@@ -15,15 +15,22 @@
 {
     self = [super init];
     _filename = filename;
+    
+    // After the first [, the depth will be 0.
     depth = -1;
+    
+    // Number of characters scanned into 'numberBuffer'
     numberLength = 0;
     return self;
 
 }
 
+// Converts the buffer to a double and sends it to the
+// delegate. Also resets 'numberLength' for next number
 - (void)sendNumber
 {
     if (numberLength == 0) {
+        NSLog(@"Odd...a zero-length number?");
         return;
     }
     numberBuffer[numberLength] = '\0';
@@ -38,6 +45,7 @@
 
 - (BOOL)parse:(NSError **)err
 {
+    // Using ANSI standard file I/O
     fileHandle = fopen([self.filename cStringUsingEncoding:NSUTF8StringEncoding], "r");
     if (!fileHandle) {
         if (err) {
@@ -48,9 +56,11 @@
         return NO;
     }
     
+    // Read every character in the file
     while (!feof(fileHandle)) {
         char c = fgetc(fileHandle);
         
+        // Is it the start of a new array?
         if (c == '[') {
             depth++;
             indices[depth] = 0;
@@ -58,6 +68,7 @@
             continue;
         }
         
+        // Is it the close of the old array?
         if (c == ']') {
             if (state == READING_NUMBER) {
                 [self sendNumber];
@@ -68,6 +79,7 @@
             continue;
         }
         
+        // The comma is a separator of numbers and arrays
         if (c == ',') {
             if (state == READING_NUMBER) {
                 [self sendNumber];
@@ -77,11 +89,13 @@
             continue;
         }
         
+        // Who cares about whitespace?
         if (isspace(c)) {
             continue;
         }
         
-        // Must be part of a number
+        // The character must be part of a number
+        // (a digit, a decimal, a dash)
         state = READING_NUMBER;
         numberBuffer[numberLength] = c;
         numberLength++;

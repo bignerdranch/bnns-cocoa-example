@@ -64,6 +64,7 @@
                               fromFilename:weightsPath
                                outerLength:IN_COUNT
                                innerLength:OUT_COUNT
+                                  reverse:YES
                                      error:&error];
     
     if (!success) {
@@ -109,18 +110,21 @@
 {
     float buffer[IN_COUNT];
     
+    // Convert intput to floats
     for (int i = 0; i < IN_COUNT; i++ ){
         buffer[i] = im[i] / 255.0;
     }
     float output[OUT_COUNT];
     
+    // Run the data through the net
     int success = BNNSFilterApply(filter, buffer, output);
-    
-    softmax(output, guesses, OUT_COUNT);
-    
     if (success != 0) {
         NSLog(@"FilterApply failed!");
     }
+
+    // Apply a softmax function
+    softmax(output, guesses, OUT_COUNT);
+    
 }
 
 - (void)showSelectedImage
