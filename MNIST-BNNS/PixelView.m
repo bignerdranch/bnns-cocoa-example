@@ -21,7 +21,7 @@
     [self setNeedsDisplay:YES];
 }
 
-- (void)finalize
+- (void)dealloc
 {
     free(data);
 }

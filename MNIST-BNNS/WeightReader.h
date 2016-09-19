@@ -8,15 +8,8 @@
 // Useful for reading weights from a python file using PyDumpParser
 
 #import <Foundation/Foundation.h>
-#import "PyDumpParser.h"
 
-@interface WeightReader : NSObject <PyDumpParserDelegate>
-
-@property float *arrayToFill;
-@property int outerLen;
-@property int innerLen;
-@property BOOL isReversed;
-
+@interface WeightReader : NSObject
 
 // Read a 2-dimensional array into weightVector
 // The outer array should have 'outerLen' arrays

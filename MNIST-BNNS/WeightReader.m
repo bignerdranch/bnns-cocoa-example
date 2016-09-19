@@ -8,6 +8,17 @@
 
 #import "WeightReader.h"
 
+#import "PyDumpParser.h"
+
+@interface WeightReader () <PyDumpParserDelegate>
+
+@property float *arrayToFill;
+@property int outerLen;
+@property int innerLen;
+@property BOOL isReversed;
+
+@end // extension
+
 @implementation WeightReader
 
 
@@ -41,17 +52,11 @@
      fromFilename:(NSString *)weightsPath
            length:(int)len
             error:(NSError **)err
-
 {
-    WeightReader *wr = [[WeightReader alloc] init];
-    wr.arrayToFill = weightVector;
-    wr.outerLen = len;
-    wr.innerLen = 0;
-    
-    PyDumpParser *parser = [[PyDumpParser alloc] initWithFilename:weightsPath];
-    parser.delegate = wr;
-    BOOL success = [parser parse:err];
-    return success;
+    return [self fillArray:weightVector fromFilename:weightsPath
+               outerLength: len innerLength:0
+                   reverse:NO
+                     error:err];
 }
 
 - (void)parserBeginArray:(PyDumpParser *)sender

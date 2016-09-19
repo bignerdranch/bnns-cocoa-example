@@ -1,13 +1,27 @@
-//
-//  PyDumpParser.m
-//  MNIST-BNNS
-//
-//  Created by Aaron Hillegass on 9/18/16.
-//  Copyright © 2016 Big Nerd Ranch. All rights reserved.
-//
-
 #import "PyDumpParser.h"
 #include <ctype.h>
+
+
+#define MAX_DIGITS (128)
+#define MAX_DEPTH (128)
+
+// States
+#define READING_NUMBER (1)
+#define NOT_READING_NUMBER (0)
+
+
+@interface PyDumpParser() {
+    FILE *fileHandle;
+    char numberBuffer[MAX_DIGITS];
+    NSUInteger numberLength;
+    NSUInteger indices[MAX_DEPTH];
+    int depth;
+    int state;
+}
+
+@property (copy) NSString *filename;
+@end
+
 
 @implementation PyDumpParser
 
@@ -22,7 +36,7 @@
     // Number of characters scanned into 'numberBuffer'
     numberLength = 0;
     return self;
-
+    
 }
 
 // Converts the buffer to a double and sends it to the
@@ -104,7 +118,5 @@
     fclose(fileHandle);
     return YES;
 }
-
-
 
 @end

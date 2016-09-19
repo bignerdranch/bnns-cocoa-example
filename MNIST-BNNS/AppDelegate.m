@@ -37,24 +37,17 @@
 
 - (void)createModel
 {
+    // The input layer has 784 nodes that will be fed floats
+    BNNSVectorDescriptor inVectorDescriptor = { .data_type = BNNSDataTypeFloat32, .size = IN_COUNT };
     
-    BNNSVectorDescriptor inVectorDescriptor;
-    bzero(&inVectorDescriptor,sizeof(inVectorDescriptor));
-    inVectorDescriptor.data_type = BNNSDataTypeFloat32;
-    inVectorDescriptor.size = IN_COUNT;
+    // The output layer has 10 nodes that will yield floats
+    BNNSVectorDescriptor outVectorDescriptor = {.data_type = BNNSDataTypeFloat32, .size = OUT_COUNT};
+
+    // The input and output layers are fully connected
+    BNNSFullyConnectedLayerParameters parameters = { .in_size = IN_COUNT, .out_size = OUT_COUNT };
     
-    BNNSVectorDescriptor outVectorDescriptor;
-    bzero(&outVectorDescriptor,sizeof(outVectorDescriptor));
-    outVectorDescriptor.data_type = BNNSDataTypeFloat32;
-    outVectorDescriptor.size = OUT_COUNT;
     
-    BNNSFullyConnectedLayerParameters parameters;
-    bzero(&parameters,sizeof(parameters));
-    
-    parameters.in_size = IN_COUNT;
-    parameters.out_size = OUT_COUNT;
-    parameters.activation.function = BNNSActivationFunctionIdentity;
-    
+    // Read in the weights
     NSString *weightsPath = [[NSBundle mainBundle] pathForResource:@"weights"
                                                             ofType:@"data"];
 
@@ -71,7 +64,10 @@
         NSLog(@"failed to read weights: %@", error);
     }
     
+    parameters.weights.data = weightVector;
+    parameters.weights.data_type = BNNSDataTypeFloat32;
 
+    // Read in the biases
     NSString *biasesPath = [[NSBundle mainBundle] pathForResource:@"biases"
                                                            ofType:@"data"];
 
@@ -86,14 +82,13 @@
         NSLog(@"failed to read weights: %@", error);
     }
 
-    
-    parameters.weights.data = weightVector;
-    parameters.weights.data_type = BNNSDataTypeFloat32;
-
     parameters.bias.data = biasVector;
     parameters.bias.data_type = BNNSDataTypeFloat32;
     
+    // TensorFlow has the trivial activation function (before it is softmax'ed)
+    parameters.activation.function = BNNSActivationFunctionIdentity;
     
+    // Create the filter
     filter = BNNSFilterCreateFullyConnectedLayer(&inVectorDescriptor,
                                                  &outVectorDescriptor,
                                                  &parameters,NULL);

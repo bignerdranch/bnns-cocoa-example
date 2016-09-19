@@ -18,8 +18,6 @@
     unsigned int selectedImage;
     BNNSFilter filter;
 }
-- (IBAction)showNext:(id)sender;
-- (IBAction)showPrevious:(id)sender;
 
 @end
 
